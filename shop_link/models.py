@@ -21,7 +21,7 @@ class Link(models.Model):
         verbose_name_plural = 'Торговые звенья'
 
 
-class Contacts(models.Model):
+class Contact(models.Model):
     email = models.CharField(max_length=100, verbose_name='email')
     country = models.CharField(max_length=100, verbose_name='Страна')
     city = models.CharField(max_length=100, verbose_name='Город')
@@ -40,7 +40,7 @@ class Contacts(models.Model):
 class Product(models.Model):
     name = models.CharField(max_length=100, verbose_name='Название')
     model = models.CharField(max_length=100, verbose_name='Модель')
-    data = models.DateTimeField(verbose_name='Дата выхода продукта на рынок')
+    data = models.DateField(verbose_name='Дата выхода продукта на рынок')
     link = models.ForeignKey(Link, on_delete=models.CASCADE, verbose_name='Звено цепи')
 
     def __str__(self):
