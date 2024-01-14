@@ -34,3 +34,18 @@ class LinkSerializer(serializers.ModelSerializer):
         validators = [Status_Link_In_LinkValidator(),
                       Debt_In_LinkValidator()
                       ]
+
+
+class LinkUpdateSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Link
+        fields = '__all__'
+        validators = [Status_Link_In_LinkValidator(),
+                      Debt_In_LinkValidator()
+                      ]
+
+    def validate(self, data):
+        if 'debt' in data:  # проверяем, был ли изменен параметр "debt"
+            raise serializers.ValidationError("Вы не можете изменять параметр debt ")
+        return data

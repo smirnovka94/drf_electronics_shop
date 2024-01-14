@@ -1,7 +1,7 @@
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import generics
 from shop_link.models import Link
-from shop_link.serializers.link import LinkSerializer, LinkDetailSerializer
+from shop_link.serializers.link import LinkSerializer, LinkDetailSerializer, LinkUpdateSerializer
 from users.permissions import IsActiveUser
 
 
@@ -22,7 +22,7 @@ class LinkCreateAPIView(generics.CreateAPIView):
     permission_classes = [IsActiveUser]
     
 class LinkUpdateAPIView(generics.UpdateAPIView):
-    serializer_class = LinkSerializer
+    serializer_class = LinkUpdateSerializer
     queryset = Link.objects.all()
     permission_classes = [IsActiveUser]
 
