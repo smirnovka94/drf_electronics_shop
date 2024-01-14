@@ -1,3 +1,4 @@
+from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import generics
 from shop_link.models import Link
 from shop_link.serializers.link import LinkSerializer, LinkDetailSerializer
@@ -6,6 +7,8 @@ from shop_link.serializers.link import LinkSerializer, LinkDetailSerializer
 class LinkListAPIView(generics.ListAPIView):
     serializer_class = LinkDetailSerializer
     queryset = Link.objects.all()
+    filter_backends = [DjangoFilterBackend]
+    filterset_fields = ('country',)
 
 
 class LinkDetailAPIView(generics.RetrieveAPIView):

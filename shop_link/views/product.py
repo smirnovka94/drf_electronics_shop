@@ -24,4 +24,3 @@ class ProductUpdateAPIView(generics.UpdateAPIView):
 
 class ProductDestroyAPIView(generics.DestroyAPIView):
     queryset = Product.objects.all()
-

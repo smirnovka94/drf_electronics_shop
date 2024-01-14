@@ -1,11 +1,5 @@
 from django.contrib import admin
-from shop_link.models import Link, Contact, Product
-
-
-@admin.register(Contact)
-class ContactAdmin(admin.ModelAdmin):
-    list_display = ('pk', 'email',)
-    list_filter = ('city',)
+from shop_link.models import Link, Product
 
 
 @admin.action(description="Очисить задолженность перед поставщиком")
@@ -16,7 +10,7 @@ def make_published(modeladmin, request, queryset):
 @admin.register(Link)
 class ContactAdmin(admin.ModelAdmin):
     list_display = ('pk', 'status_link', 'name', 'debt')
-
+    list_filter = ('city',)
     actions = [make_published]
 
 

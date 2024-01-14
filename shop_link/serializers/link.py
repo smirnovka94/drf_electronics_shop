@@ -1,28 +1,29 @@
 from rest_framework import serializers
-from shop_link.models import Contact, Product
+from shop_link.models import Product
 from shop_link.models import Link
-from shop_link.serializers.contact import ContactSerializer
-from shop_link.serializers.product import ProductSerializer
-from shop_link.validators import Status_Link_In_LinkValidator
+
+from shop_link.validators import Status_Link_In_LinkValidator, Debt_In_LinkValidator
 
 
 class LinkDetailSerializer(serializers.ModelSerializer):
-    contacts = serializers.SerializerMethodField()
     products = serializers.SerializerMethodField()
 
     class Meta:
         model = Link
         fields = '__all__'
 
-    def get_contacts(self, obj):
-        """Получаем список контактов"""
-        contacts = Contact.objects.filter(link=obj)
-        return ContactSerializer(contacts, many=True).data
-
     def get_products(self, obj):
         """Получаем список продуктов"""
         products = Product.objects.filter(link=obj)
-        return ProductSerializer(products, many=True).data
+        products_list = []
+        products_dict = {}
+
+        for product in products:
+            products_dict["name"] = product.name
+            products_dict["model"] = product.model
+            products_dict["data"] = product.data
+            products_list.append(products_dict)
+        return products_list
 
 
 class LinkSerializer(serializers.ModelSerializer):
@@ -30,4 +31,6 @@ class LinkSerializer(serializers.ModelSerializer):
     class Meta:
         model = Link
         fields = '__all__'
-        validators = [Status_Link_In_LinkValidator()]
+        validators = [Status_Link_In_LinkValidator(),
+                      Debt_In_LinkValidator()
+                      ]
