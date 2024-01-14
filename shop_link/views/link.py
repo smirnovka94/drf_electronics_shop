@@ -1,15 +1,15 @@
 from rest_framework import generics
 from shop_link.models import Link
-from shop_link.serializers.link import LinkSerializer
+from shop_link.serializers.link import LinkSerializer, LinkDetailSerializer
 
 
 class LinkListAPIView(generics.ListAPIView):
-    serializer_class = LinkSerializer
+    serializer_class = LinkDetailSerializer
     queryset = Link.objects.all()
 
 
 class LinkDetailAPIView(generics.RetrieveAPIView):
-    serializer_class = LinkSerializer
+    serializer_class = LinkDetailSerializer
     queryset = Link.objects.all()
     
 
