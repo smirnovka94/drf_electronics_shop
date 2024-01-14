@@ -1,6 +1,8 @@
 from datetime import datetime
 from django.db import models
 
+NULLABLE = {'blank': True, 'null': True}
+
 
 class Link(models.Model):
     STATUSLINK = [
@@ -8,9 +10,11 @@ class Link(models.Model):
         ("RN", "Розничная сеть"),
         ("IE", "Индивидуальный предприниматель"),
     ]
+
     status_link = models.CharField(max_length=30, choices=STATUSLINK, verbose_name='Статус звена')
+    related_link = models.ForeignKey('self', on_delete=models.CASCADE, verbose_name='Ссылка на поставщика', **NULLABLE)
     name = models.CharField(max_length=100, verbose_name='Название')
-    debt = models.IntegerField(verbose_name='Задолженность перед поставщиком')
+    debt = models.FloatField(verbose_name='Задолженность перед поставщиком', **NULLABLE)
     data_course = models.DateTimeField(default=datetime.now, verbose_name='Время создания')
 
     def __str__(self):
