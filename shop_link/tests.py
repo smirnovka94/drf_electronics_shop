@@ -22,7 +22,7 @@ class LinkTestCase(APITestCase):
         self.user.save()
 
         utc = timezone('UTC')
-        self.data_course = datetime(2024, 1, 15, 20, 0, 0, tzinfo=utc)
+        self.data_create = datetime(2024, 1, 15, 20, 0, 0, tzinfo=utc)
 
         self.link = Link.objects.create(
             status_link="FA",
@@ -31,7 +31,7 @@ class LinkTestCase(APITestCase):
             country="Canada",
             city="Vancouver",
             street="Canada st",
-            data_course=self.data_course,
+            data_create=self.data_create,
             num_house="46D",
             )
         self.link_next = Link.objects.create(
@@ -41,7 +41,7 @@ class LinkTestCase(APITestCase):
             country="Russia",
             city="Spp",
             street="Nevsky Prospekt",
-            data_course=self.data_course,
+            data_create=self.data_create,
             related_link=self.link,
             num_house="4",
         )
@@ -55,7 +55,7 @@ class LinkTestCase(APITestCase):
             "country": "Canada",
             "city": "Vancouver",
             "street": "Canada st",
-            "data_course": self.data_course,
+            "data_create": self.data_create,
             "num_house": "46D"
         }
         response = self.client.post(
@@ -103,7 +103,7 @@ class LinkTestCase(APITestCase):
             "country": "new_Canada",
             "city": "new_Vancouver",
             "street": "new_Canada st",
-            "data_course": self.data_course,
+            "data_create": self.data_create,
             "num_house": "46D"
         }
 
@@ -139,7 +139,7 @@ class LinkTestCase(APITestCase):
             "country": "Canada",
             "city": "Vancouver",
             "street": "Canada st",
-            "data_course": self.data_course,
+            "data_create": self.data_create,
             "related_link": self.link.id,
             "num_house": "46D"
         }
@@ -167,7 +167,7 @@ class LinkTestCase(APITestCase):
             "country": "Canada",
             "city": "Vancouver",
             "street": "Canada st",
-            "data_course": self.data_course,
+            "data_create": self.data_create,
             "debt": 200,
             "num_house": "46D"
         }
@@ -195,7 +195,7 @@ class LinkTestCase(APITestCase):
             "country": "Canada",
             "city": "Vancouver",
             "street": "Canada st",
-            "data_course": self.data_course,
+            "data_create": self.data_create,
             "debt": 200,
             "num_house": "46D"
         }
@@ -225,7 +225,7 @@ class ProductTestCase(APITestCase):
         self.user2.save()
 
         utc = timezone('UTC')
-        self.data_course = datetime(2024, 1, 15, 20, 0, 0, tzinfo=utc)
+        self.data_create = datetime(2024, 1, 15, 20, 0, 0, tzinfo=utc)
 
         self.link = Link.objects.create(
             status_link="FA",
@@ -234,7 +234,7 @@ class ProductTestCase(APITestCase):
             country="Canada",
             city="Vancouver",
             street="Canada st",
-            data_course=self.data_course,
+            data_create=self.data_create,
             num_house="46D",
         )
         self.product = Product.objects.create(

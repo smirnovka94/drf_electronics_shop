@@ -23,7 +23,7 @@ class Link(models.Model):
 
     debt = models.DecimalField(max_digits=10, decimal_places=2, verbose_name='Задолженность перед поставщиком',
                                **NULLABLE)
-    data_course = models.DateTimeField(default=datetime.now, verbose_name='Время создания')
+    data_create = models.DateTimeField(default=datetime.now, verbose_name='Время создания')
 
     def __str__(self):
         return f"{self.status_link} - {self.name}"
