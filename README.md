@@ -28,8 +28,13 @@ python manage.py migrate
 добавить неактивного пользователя
 ```
 python manage.py users_data
-
 ```
+добавить значения остальных моделей
+```
+python manage.py link_data   
+python manage.py product_data
+```
+
 Создаем superuser
 login: kirill@sky.pro
 password: qwerty88
