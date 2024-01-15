@@ -14,7 +14,7 @@ class Command(BaseCommand):
                 "name": "IE",
                 "email": "fabric1@mail.ru",
                 "country": "Canada",
-                "city": "Vancuwer",
+                "city": "Vancouver",
                 "street": "Canada st",
                 "num_house": "46D"
             },
