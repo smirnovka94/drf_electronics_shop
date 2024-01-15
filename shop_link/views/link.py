@@ -12,19 +12,23 @@ class LinkListAPIView(generics.ListAPIView):
     filterset_fields = ('country',)
     permission_classes = [IsActiveUser]
 
+
 class LinkDetailAPIView(generics.RetrieveAPIView):
     serializer_class = LinkDetailSerializer
     queryset = Link.objects.all()
     permission_classes = [IsActiveUser]
 
+
 class LinkCreateAPIView(generics.CreateAPIView):
     serializer_class = LinkSerializer
     permission_classes = [IsActiveUser]
-    
+
+
 class LinkUpdateAPIView(generics.UpdateAPIView):
     serializer_class = LinkUpdateSerializer
     queryset = Link.objects.all()
     permission_classes = [IsActiveUser]
+
 
 class LinkDestroyAPIView(generics.DestroyAPIView):
     queryset = Link.objects.all()

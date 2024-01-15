@@ -21,7 +21,8 @@ class Link(models.Model):
     street = models.CharField(max_length=100, verbose_name='Улица')
     num_house = models.CharField(max_length=10, verbose_name='Номер дома')
 
-    debt = models.DecimalField(max_digits=10, decimal_places=2, verbose_name='Задолженность перед поставщиком', **NULLABLE)
+    debt = models.DecimalField(max_digits=10, decimal_places=2, verbose_name='Задолженность перед поставщиком',
+                               **NULLABLE)
     data_course = models.DateTimeField(default=datetime.now, verbose_name='Время создания')
 
     def __str__(self):

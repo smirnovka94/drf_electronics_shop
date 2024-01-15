@@ -9,6 +9,7 @@ class Status_Link_In_LinkValidator:
         if status_link == "FA" and related_link is not None:
             raise ValidationError("У завода не может быть поставщика")
 
+
 class Debt_In_LinkValidator:
     """Запрет на ввод долга поставщику для завода"""
     def __call__(self, attrs):

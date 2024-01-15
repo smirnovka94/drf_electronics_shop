@@ -214,6 +214,7 @@ class LinkTestCase(APITestCase):
             status.HTTP_400_BAD_REQUEST
         )
 
+
 class ProductTestCase(APITestCase):
     def setUp(self):
         self.user2 = User.objects.create(

@@ -9,19 +9,23 @@ class ProductListAPIView(generics.ListAPIView):
     queryset = Product.objects.all()
     permission_classes = [IsActiveUser]
 
+
 class ProductDetailAPIView(generics.RetrieveAPIView):
     serializer_class = ProductSerializer
     queryset = Product.objects.all()
     permission_classes = [IsActiveUser]
 
+
 class ProductCreateAPIView(generics.CreateAPIView):
     serializer_class = ProductSerializer
     permission_classes = [IsActiveUser]
+
 
 class ProductUpdateAPIView(generics.UpdateAPIView):
     serializer_class = ProductSerializer
     queryset = Product.objects.all()
     permission_classes = [IsActiveUser]
+
 
 class ProductDestroyAPIView(generics.DestroyAPIView):
     queryset = Product.objects.all()

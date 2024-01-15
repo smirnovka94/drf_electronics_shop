@@ -1,6 +1,7 @@
 from django.urls import path
 from shop_link.apps import ShopLinkConfig
-from shop_link.views.link import LinkListAPIView, LinkDetailAPIView, LinkCreateAPIView, LinkDestroyAPIView, LinkUpdateAPIView
+from shop_link.views.link import LinkListAPIView, LinkDetailAPIView, LinkCreateAPIView, LinkDestroyAPIView, \
+    LinkUpdateAPIView
 from shop_link.views.product import ProductCreateAPIView, ProductListAPIView, ProductDetailAPIView, \
     ProductUpdateAPIView, ProductDestroyAPIView
 
@@ -18,5 +19,4 @@ urlpatterns = [
     path('product/<int:pk>/', ProductDetailAPIView.as_view(), name='product_get'),
     path('product/update/<int:pk>/', ProductUpdateAPIView.as_view(), name='product_update'),
     path('product/delete/<int:pk>/', ProductDestroyAPIView.as_view(), name='product_delete'),
-
 ]
