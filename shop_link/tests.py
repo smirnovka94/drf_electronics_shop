@@ -47,7 +47,7 @@ class LinkTestCase(APITestCase):
         )
 
     def test_create_link(self):
-        """Тест создание Звена продаж"""
+        """Тест создание Звена торговой цепи"""
         data = {
             "status_link": "FA",
             "name": "IE",
@@ -74,7 +74,7 @@ class LinkTestCase(APITestCase):
         )
 
     def test_get_list(self):
-        """Тест чтение списка Звена продаж"""
+        """Тест чтение списка Звена торговой цепи"""
         response = self.client.get(
             '/link/'
         )
@@ -84,7 +84,7 @@ class LinkTestCase(APITestCase):
         )
 
     def test_link(self):
-        """Тест чтение экземпляра Звена продаж"""
+        """Тест чтение экземпляра Звена торговой цепи"""
 
         response = self.client.get(
             reverse('link:link_get', args=[self.link.id]))
@@ -95,7 +95,7 @@ class LinkTestCase(APITestCase):
         )
 
     def test_link_update(self):
-        """Тест Обновление экземпляра Звена продаж"""
+        """Тест Обновление экземпляра Звена торговой цепи"""
         data = {
             "status_link": "FA",
             "name": "new_IE",
@@ -119,7 +119,7 @@ class LinkTestCase(APITestCase):
         )
 
     def test_link_delete(self):
-        """Тест удаление экземпляра Звена продаж"""
+        """Тест удаление экземпляра Звена торговой цепи"""
 
         response = self.client.delete(
             reverse('link:link_delete', args=[self.link.id])
