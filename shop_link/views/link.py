@@ -6,6 +6,7 @@ from users.permissions import IsActiveUser
 
 
 class LinkListAPIView(generics.ListAPIView):
+    """Чтение списка продуктов"""
     serializer_class = LinkDetailSerializer
     queryset = Link.objects.all()
     filter_backends = [DjangoFilterBackend]
@@ -14,22 +15,26 @@ class LinkListAPIView(generics.ListAPIView):
 
 
 class LinkDetailAPIView(generics.RetrieveAPIView):
+    """Чтение звена торговой сети"""
     serializer_class = LinkDetailSerializer
     queryset = Link.objects.all()
     permission_classes = [IsActiveUser]
 
 
 class LinkCreateAPIView(generics.CreateAPIView):
+    """Создание звена торговой сети"""
     serializer_class = LinkSerializer
     permission_classes = [IsActiveUser]
 
 
 class LinkUpdateAPIView(generics.UpdateAPIView):
+    """Обновление звена торговой сети"""
     serializer_class = LinkUpdateSerializer
     queryset = Link.objects.all()
     permission_classes = [IsActiveUser]
 
 
 class LinkDestroyAPIView(generics.DestroyAPIView):
+    """Удаление звена торговой сети"""
     queryset = Link.objects.all()
     permission_classes = [IsActiveUser]
